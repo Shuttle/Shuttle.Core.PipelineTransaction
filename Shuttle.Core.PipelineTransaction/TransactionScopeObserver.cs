@@ -7,6 +7,7 @@ using Shuttle.Core.Transactions;
 namespace Shuttle.Core.PipelineTransaction
 {
     public class TransactionScopeObserver :
+        ITransactionScopeObserver,
         IPipelineObserver<OnStartTransactionScope>,
         IPipelineObserver<OnCompleteTransactionScope>,
         IPipelineObserver<OnDisposeTransactionScope>,
