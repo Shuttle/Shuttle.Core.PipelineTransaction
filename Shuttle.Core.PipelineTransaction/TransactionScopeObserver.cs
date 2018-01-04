@@ -6,13 +6,16 @@ using Shuttle.Core.Transactions;
 
 namespace Shuttle.Core.PipelineTransaction
 {
-    public class TransactionScopeObserver :
-        ITransactionScopeObserver,
+    public interface ITransactionScopeObserver : 
         IPipelineObserver<OnStartTransactionScope>,
-        IPipelineObserver<OnCompleteTransactionScope>,
+        IPipelineObserver<OnCompleteTransactionScope>, 
         IPipelineObserver<OnDisposeTransactionScope>,
-        IPipelineObserver<OnAbortPipeline>,
+        IPipelineObserver<OnAbortPipeline>, 
         IPipelineObserver<OnPipelineException>
+    {
+    }
+
+    public class TransactionScopeObserver : ITransactionScopeObserver
     {
         private readonly ITransactionScopeFactory _transactionScopeFactory;
 
