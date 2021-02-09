@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Shuttle.Core.Pipelines" Version="10.0.7" />
+    <PackageReference Include="Shuttle.Core.Pipelines" Version="10.1.0" />
     <PackageReference Include="Shuttle.Core.Transactions" Version="10.0.3" />
   </ItemGroup>
 
