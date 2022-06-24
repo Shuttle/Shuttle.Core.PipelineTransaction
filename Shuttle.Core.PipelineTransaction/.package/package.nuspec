@@ -3,7 +3,7 @@
 <package>
 	<metadata>
 		<id>Shuttle.Core.PipelineTransaction</id>
-		<version>10.0.4</version>
+		<version>11.0.0</version>
 		<authors>Eben Roux</authors>
 		<owners>Eben Roux</owners>
 		<license type="expression">BSD-3-Clause</license>
@@ -12,11 +12,11 @@
 		<repository type="git" url="https://github.com/shuttle/Shuttle.Core.PipelineTransaction.git" />
 		<projectUrl>https://github.com/shuttle/Shuttle.Core.PipelineTransaction</projectUrl>
 		<description>Provides a pipeline observer to handle transaction scopes.</description>
-		<copyright>Copyright (c) 2020, Eben Roux</copyright>
+		<copyright>Copyright (c) 2022, Eben Roux</copyright>
 		<tags>shuttle pipelines transactions transactionscope</tags>
 		<dependencies>
-      <dependency id="Shuttle.Core.Pipelines" version="10.0.7" />
-      <dependency id="Shuttle.Core.Transactions" version="10.0.3" />
+      <dependency id="Shuttle.Core.Pipelines" version="12.0.0" />
+      <dependency id="Shuttle.Core.Transactions" version="11.0.0" />
 		</dependencies>
 	</metadata>
 	<files>

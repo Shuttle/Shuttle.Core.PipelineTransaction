@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Microsoft.Extensions.Options;
 using Shuttle.Core.Contract;
 using Shuttle.Core.Pipelines;
 using Shuttle.Core.Transactions;
@@ -18,12 +19,15 @@ namespace Shuttle.Core.PipelineTransaction
     public class TransactionScopeObserver : ITransactionScopeObserver
     {
         private readonly ITransactionScopeFactory _transactionScopeFactory;
+        private readonly TransactionScopeSettings _settings;
 
-        public TransactionScopeObserver(ITransactionScopeFactory transactionScopeFactory)
+        public TransactionScopeObserver(ITransactionScopeFactory transactionScopeFactory, IOptions<TransactionScopeSettings> options)
         {
             Guard.AgainstNull(transactionScopeFactory, nameof(transactionScopeFactory));
+            Guard.AgainstNull(options, nameof(options));
 
             _transactionScopeFactory = transactionScopeFactory;
+            _settings = options.Value;
         }
 
         public void Execute(OnAbortPipeline pipelineEvent)
@@ -106,10 +110,10 @@ namespace Shuttle.Core.PipelineTransaction
             {
                 throw new InvalidOperationException(
                     string.Format(Resources.TransactionAlreadyStartedException, GetType().FullName,
-                        MethodBase.GetCurrentMethod().Name));
+                        MethodBase.GetCurrentMethod()?.Name ?? Resources.MethodNameNotFound));
             }
 
-            scope = _transactionScopeFactory.Create();
+            scope = _transactionScopeFactory.Create(_settings.IsolationLevel, _settings.Timeout);
 
             state.SetTransactionScope(scope);
         }
