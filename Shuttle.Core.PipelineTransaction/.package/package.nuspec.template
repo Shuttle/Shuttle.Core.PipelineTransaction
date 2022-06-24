@@ -21,6 +21,7 @@
 	</metadata>
 	<files>
 		<file src="..\..\..\.media\logo.png" target="images" />
+		<file src="..\..\..\README.md" target="docs\" />
 		<file src="lib\**\*.*" target="lib" />
 	</files>
 </package>
