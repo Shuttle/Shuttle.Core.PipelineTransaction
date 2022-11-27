@@ -13,7 +13,7 @@ namespace Shuttle.Core.PipelineTransaction
 
         public static void SetTransactionScope(this IState state, ITransactionScope scope)
         {
-            Guard.AgainstNull(state, nameof(state)).Replace("TransactionScope", Guard.AgainstNull(scope, nameof(scope)));
+            Guard.AgainstNull(state, nameof(state)).Replace("TransactionScope", scope);
         }
 
         public static bool GetTransactionComplete(this IState state)

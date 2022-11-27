@@ -17,7 +17,7 @@
 		<tags>shuttle pipelines transactions transactionscope</tags>
 		<dependencies>
       <dependency id="Shuttle.Core.Pipelines" version="12.1.1" />
-      <dependency id="Shuttle.Core.Transactions" version="11.0.0" />
+      <dependency id="Shuttle.Core.Transactions" version="11.0.1" />
 		</dependencies>
 	</metadata>
 	<files>
