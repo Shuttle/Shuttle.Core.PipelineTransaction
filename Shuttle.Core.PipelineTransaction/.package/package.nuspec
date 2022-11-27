@@ -3,7 +3,7 @@
 <package>
 	<metadata>
 		<id>Shuttle.Core.PipelineTransaction</id>
-		<version>11.0.0</version>
+		<version>11.0.1</version>
 		<authors>Eben Roux</authors>
 		<owners>Eben Roux</owners>
 		<license type="expression">BSD-3-Clause</license>
@@ -16,7 +16,7 @@
 		<copyright>Copyright (c) 2022, Eben Roux</copyright>
 		<tags>shuttle pipelines transactions transactionscope</tags>
 		<dependencies>
-      <dependency id="Shuttle.Core.Pipelines" version="12.0.0" />
+      <dependency id="Shuttle.Core.Pipelines" version="12.1.1" />
       <dependency id="Shuttle.Core.Transactions" version="11.0.0" />
 		</dependencies>
 	</metadata>

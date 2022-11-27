@@ -24,15 +24,15 @@ namespace Shuttle.Core.PipelineTransaction
         public TransactionScopeObserver(IOptions<TransactionScopeOptions> transactionScopeOptions, ITransactionScopeFactory transactionScopeFactory)
         {
             Guard.AgainstNull(transactionScopeOptions, nameof(transactionScopeOptions));
-            Guard.AgainstNull(transactionScopeOptions.Value, nameof(transactionScopeOptions.Value));
-            Guard.AgainstNull(transactionScopeFactory, nameof(transactionScopeFactory));
-
-            _transactionScopeOptions = transactionScopeOptions.Value;
-            _transactionScopeFactory = transactionScopeFactory;
+            
+            _transactionScopeOptions = Guard.AgainstNull(transactionScopeOptions.Value, nameof(transactionScopeOptions.Value));
+            _transactionScopeFactory = Guard.AgainstNull(transactionScopeFactory, nameof(transactionScopeFactory));
         }
 
         public void Execute(OnAbortPipeline pipelineEvent)
         {
+            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
+
             var state = pipelineEvent.Pipeline.State;
             var scope = state.GetTransactionScope();
 
@@ -53,6 +53,8 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnCompleteTransactionScope pipelineEvent)
         {
+            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
+
             var state = pipelineEvent.Pipeline.State;
             var scope = state.GetTransactionScope();
 
@@ -69,6 +71,8 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnDisposeTransactionScope pipelineEvent)
         {
+            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
+
             var state = pipelineEvent.Pipeline.State;
             var scope = state.GetTransactionScope();
 
@@ -84,6 +88,8 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnPipelineException pipelineEvent)
         {
+            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
+
             var state = pipelineEvent.Pipeline.State;
             var scope = state.GetTransactionScope();
 
@@ -104,6 +110,8 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnStartTransactionScope pipelineEvent)
         {
+            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
+
             var state = pipelineEvent.Pipeline.State;
             var scope = state.GetTransactionScope();
 

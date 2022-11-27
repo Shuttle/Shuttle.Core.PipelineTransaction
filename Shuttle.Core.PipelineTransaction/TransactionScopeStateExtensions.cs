@@ -1,4 +1,5 @@
-﻿using Shuttle.Core.Pipelines;
+﻿using Shuttle.Core.Contract;
+using Shuttle.Core.Pipelines;
 using Shuttle.Core.Transactions;
 
 namespace Shuttle.Core.PipelineTransaction
@@ -7,22 +8,22 @@ namespace Shuttle.Core.PipelineTransaction
     {
         public static ITransactionScope GetTransactionScope(this IState state)
         {
-            return state.Get<ITransactionScope>("TransactionScope");
+            return Guard.AgainstNull(state, nameof(state)).Get<ITransactionScope>("TransactionScope");
         }
 
         public static void SetTransactionScope(this IState state, ITransactionScope scope)
         {
-            state.Replace("TransactionScope", scope);
+            Guard.AgainstNull(state, nameof(state)).Replace("TransactionScope", Guard.AgainstNull(scope, nameof(scope)));
         }
 
         public static bool GetTransactionComplete(this IState state)
         {
-            return state.Get<bool>("TransactionComplete");
+            return Guard.AgainstNull(state, nameof(state)).Get<bool>("TransactionComplete");
         }
 
         public static void SetTransactionComplete(this IState state)
         {
-            state.Replace("TransactionComplete", true);
+            Guard.AgainstNull(state, nameof(state)).Replace("TransactionComplete", true);
         }
     }
 }
