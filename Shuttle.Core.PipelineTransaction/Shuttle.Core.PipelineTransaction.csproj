@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Shuttle.Core.Pipelines" Version="13.0.0" />
-    <PackageReference Include="Shuttle.Core.Transactions" Version="11.0.1" />
+    <PackageReference Include="Shuttle.Core.Transactions" Version="11.1.0" />
   </ItemGroup>
 
   <ItemGroup>
