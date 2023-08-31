@@ -30,7 +30,7 @@ namespace Shuttle.Core.PipelineTransaction
             _transactionScopeFactory = Guard.AgainstNull(transactionScopeFactory, nameof(transactionScopeFactory));
         }
 
-        public async Task Execute(OnAbortPipeline pipelineEvent)
+        public void Execute(OnAbortPipeline pipelineEvent)
         {
             Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
 
@@ -50,11 +50,16 @@ namespace Shuttle.Core.PipelineTransaction
             scope.Dispose();
 
             state.SetTransactionScope(null);
+        }
+
+        public async Task ExecuteAsync(OnAbortPipeline pipelineEvent)
+        {
+            Execute(pipelineEvent);
 
             await Task.CompletedTask;
         }
 
-        public async Task Execute(OnCompleteTransactionScope pipelineEvent)
+        public void Execute(OnCompleteTransactionScope pipelineEvent)
         {
             Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
 
@@ -70,11 +75,16 @@ namespace Shuttle.Core.PipelineTransaction
             {
                 scope.Complete();
             }
+        }
+
+        public async Task ExecuteAsync(OnCompleteTransactionScope pipelineEvent)
+        {
+            Execute(pipelineEvent);
 
             await Task.CompletedTask;
         }
 
-        public async Task Execute(OnDisposeTransactionScope pipelineEvent)
+        public void Execute(OnDisposeTransactionScope pipelineEvent)
         {
             Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
 
@@ -89,11 +99,16 @@ namespace Shuttle.Core.PipelineTransaction
             scope.Dispose();
 
             state.SetTransactionScope(null);
+        }
+
+        public async Task ExecuteAsync(OnDisposeTransactionScope pipelineEvent)
+        {
+            Execute(pipelineEvent);
 
             await Task.CompletedTask;
         }
 
-        public async Task Execute(OnPipelineException pipelineEvent)
+        public void Execute(OnPipelineException pipelineEvent)
         {
             Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
 
@@ -113,11 +128,16 @@ namespace Shuttle.Core.PipelineTransaction
             scope.Dispose();
 
             state.SetTransactionScope(null);
+        }
+
+        public async Task ExecuteAsync(OnPipelineException pipelineEvent)
+        {
+            Execute(pipelineEvent);
 
             await Task.CompletedTask;
         }
 
-        public async Task Execute(OnStartTransactionScope pipelineEvent)
+        public void Execute(OnStartTransactionScope pipelineEvent)
         {
             Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
 
@@ -134,6 +154,11 @@ namespace Shuttle.Core.PipelineTransaction
             scope = _transactionScopeFactory.Create(_transactionScopeOptions.IsolationLevel, _transactionScopeOptions.Timeout);
 
             state.SetTransactionScope(scope);
+        }
+
+        public async Task ExecuteAsync(OnStartTransactionScope pipelineEvent)
+        {
+            Execute(pipelineEvent);
 
             await Task.CompletedTask;
         }
