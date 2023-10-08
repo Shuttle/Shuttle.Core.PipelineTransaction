@@ -32,9 +32,7 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnAbortPipeline pipelineEvent)
         {
-            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
-
-            var state = pipelineEvent.Pipeline.State;
+            var state = Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent)).Pipeline.State;
             var scope = state.GetTransactionScope();
 
             if (scope == null)
@@ -61,9 +59,7 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnCompleteTransactionScope pipelineEvent)
         {
-            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
-
-            var state = pipelineEvent.Pipeline.State;
+            var state = Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent)).Pipeline.State;
             var scope = state.GetTransactionScope();
 
             if (scope == null)
@@ -86,9 +82,7 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnDisposeTransactionScope pipelineEvent)
         {
-            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
-
-            var state = pipelineEvent.Pipeline.State;
+            var state = Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent)).Pipeline.State;
             var scope = state.GetTransactionScope();
 
             if (scope == null)
@@ -110,9 +104,7 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnPipelineException pipelineEvent)
         {
-            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
-
-            var state = pipelineEvent.Pipeline.State;
+            var state = Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent)).Pipeline.State;
             var scope = state.GetTransactionScope();
 
             if (scope == null)
@@ -139,9 +131,7 @@ namespace Shuttle.Core.PipelineTransaction
 
         public void Execute(OnStartTransactionScope pipelineEvent)
         {
-            Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent));
-
-            var state = pipelineEvent.Pipeline.State;
+            var state = Guard.AgainstNull(pipelineEvent, nameof(pipelineEvent)).Pipeline.State;
             var scope = state.GetTransactionScope();
 
             if (scope != null)
