@@ -13,7 +13,7 @@
 		<repository type="git" url="https://github.com/shuttle/Shuttle.Core.PipelineTransaction.git" />
 		<projectUrl>https://github.com/shuttle/Shuttle.Core.PipelineTransaction</projectUrl>
 		<description>Provides a pipeline observer to handle transaction scopes.</description>
-		<copyright>Copyright (c) 2023, Eben Roux</copyright>
+		<copyright>Copyright (c) 2024, Eben Roux</copyright>
 		<tags>shuttle pipelines transactions transactionscope</tags>
 		<dependencies>
       <dependency id="Shuttle.Core.Pipelines" version="13.0.0" />
